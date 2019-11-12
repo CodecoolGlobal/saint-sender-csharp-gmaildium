@@ -3,12 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SaintSender.DesktopUI"
+        xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
         mc:Ignorable="d"
-        Title="SainSender" Height="450" Width="800">
-    <Grid>
-        <TextBox Name="NameTxt" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Name="GreetBtn" Content="Greet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="140,13,0,0" Click="GreetBtn_Click"/>
-        <TextBlock Name="ResultTxt" HorizontalAlignment="Left" Margin="10,45,0,0" FontSize="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        Title="G-Maildium" Height="450" Width="800">
+    <Window.Resources>
+        <viewModel:MainWindowViewModel x:Key="MainWindowViewModel"/>
+    </Window.Resources>
+    <Grid DataContext="{Binding MainWindowViewModel}">
+        <ListBox ItemsSource="{Binding UserMails}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Subject}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
