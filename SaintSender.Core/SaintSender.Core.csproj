@@ -80,6 +80,7 @@
     <Compile Include="Interfaces\IGreetService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="credentials.json" />
     <None Include="Entities\ReadMe.md" />
     <None Include="Interfaces\ReadMe.md" />
     <None Include="packages.config" />
