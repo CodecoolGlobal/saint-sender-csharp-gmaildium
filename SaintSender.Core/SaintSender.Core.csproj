@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\MailComposer.cs" />
+    <Compile Include="Entities\AsyncObservableCollection.cs" />
     <Compile Include="Entities\Maildium.cs" />
     <Compile Include="Entities\MailProvider.cs" />
     <Compile Include="Entities\ServiceNotInitializedException.cs" />
