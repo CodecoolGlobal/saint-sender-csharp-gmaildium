@@ -35,7 +35,7 @@ namespace SaintSender.DesktopUI.Views
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    this.Close();
+                    Close();
                     break;
             }
         }
@@ -43,6 +43,8 @@ namespace SaintSender.DesktopUI.Views
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.SendMessage(Subject.Text, Message.Text, To.Text);
+            MessageBox.Show("Message has been sent!");
+            Close();
         }
     }
 }
