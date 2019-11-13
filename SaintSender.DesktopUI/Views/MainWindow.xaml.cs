@@ -38,5 +38,14 @@ namespace SaintSender.DesktopUI
         {
             throw new NotImplementedException();
         }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                ReadMailWindow readMailWindow = new ReadMailWindow();
+                readMailWindow.Show();
+            }
+        }
     }
 }
