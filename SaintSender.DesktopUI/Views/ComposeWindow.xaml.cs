@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using SaintSender.Core.Services;
 using SaintSender.DesktopUI.Views;
 using SaintSender.DesktopUI.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace SaintSender.DesktopUI.Views
 {
@@ -42,9 +43,37 @@ namespace SaintSender.DesktopUI.Views
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = ShowAppropriateMessageBoxAndGetAnswer();
+            if (result == MessageBoxResult.Yes)
+            {
+                SendMessage();
+            }
+        }
+
+        private void SendMessage()
+        {
             ViewModel.SendMessage(Subject.Text, Message.Text, To.Text);
-            MessageBox.Show("Message has been sent!");
+            MessageBox.Show("Email has been sent!");
             Close();
+        }
+
+        private MessageBoxResult ShowAppropriateMessageBoxAndGetAnswer()
+        {
+            MessageBoxResult result = MessageBoxResult.Yes;
+            var address = new EmailAddressAttribute();
+
+            if (!address.IsValid(To.Text))
+            {
+                MessageBox.Show("Invalid email address!");
+                result = MessageBoxResult.No;
+            }
+            else if (Subject.Text == string.Empty || Message.Text == string.Empty)
+            {
+                result = MessageBox.Show("Some fields were left empty. Are you sure " +
+                    "you want to send the email?", "Confirmation", MessageBoxButton.YesNo);
+            }
+
+            return result;
         }
     }
 }
