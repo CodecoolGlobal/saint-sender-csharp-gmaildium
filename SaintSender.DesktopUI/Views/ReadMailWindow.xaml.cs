@@ -25,12 +25,10 @@ namespace SaintSender.DesktopUI
     {
         public ReadWindowViewModel ViewModel;
 
-        
         public ReadMailWindow(Maildium maildium)
         { 
+            ViewModel = new ReadWindowViewModel(maildium);  
             InitializeComponent();
-            ViewModel = new ReadWindowViewModel(maildium);
-
             
         }
     }

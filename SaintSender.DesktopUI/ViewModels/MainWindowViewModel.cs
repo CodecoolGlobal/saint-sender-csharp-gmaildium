@@ -13,7 +13,7 @@ namespace SaintSender.DesktopUI.ViewModels
     {
         private MailProvider _mailProvider = new MailProvider();
 
-        public ObservableCollection<Maildium> UserMails { get; private set; } = new ObservableCollection<Maildium>();
+        public static ObservableCollection<Maildium> UserMails { get; private set; } = new ObservableCollection<Maildium>();
 
         public MainWindowViewModel()
         {

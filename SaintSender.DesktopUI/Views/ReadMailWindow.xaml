@@ -8,9 +8,9 @@
         xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
         Title="ReadMailWindow" Height="450" Width="800">
     <Window.Resources>
-        <viewModel:ReadMailViewModel x:Key="ReadMailViewModel"/>
+        <viewModel:ReadWindowViewModel x:Key="ReadWindowViewModel"/>
     </Window.Resources>
-    <Grid  DataContext="{StaticResource ReadMailViewModel}">
+    <Grid  DataContext="{StaticResource ReadWindowViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition/>
