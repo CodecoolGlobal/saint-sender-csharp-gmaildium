@@ -29,14 +29,34 @@ namespace SaintSender.DesktopUI
             InitializeComponent();
         }
 
-        private void ConnectionButton_Click(object sender, RoutedEventArgs e)
+        private async void ConnectionButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.FillListBoxWithMails();
             ConnectionButton.IsEnabled = false;
+            if (JSONHandler.UpdateService())
+            {
+                await ViewModel.FillListBoxWithMails();
+                
+                RefreshButton.IsEnabled = true;
+                ComposeButton.IsEnabled = true;
+            } else
+            {
+                ConnectionButton.IsEnabled = true;
+                return;
+            }
+
         }
+
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshButton.IsEnabled = false;
+            await ViewModel.ClearList();
+            await ViewModel.FillListBoxWithMails();
+            RefreshButton.IsEnabled = true;
         }
     }
 }

@@ -12,17 +12,21 @@ namespace SaintSender.DesktopUI.ViewModels
     public class MainWindowViewModel
     {
         private MailProvider _mailProvider = new MailProvider();
+        private ObservableCollection<Maildium> _userMails = new AsyncObservableCollection<Maildium>();
 
-        public ObservableCollection<Maildium> UserMails { get; private set; } = new ObservableCollection<Maildium>();
+        public ObservableCollection<Maildium> UserMails { get => _userMails; private set => _userMails = value; }
 
-        public MainWindowViewModel()
+        internal Task FillListBoxWithMails()
         {
-            JSONHandler.UpdateService();
+            var task = Task.Run(() => _mailProvider.FillListWithMailsFromAPI(UserMails, 20));
+            return task;
         }
 
-        internal void FillListBoxWithMails()
+        internal Task ClearList()
         {
-            _mailProvider.FillListWithMailsFromAPI(UserMails, 20);
+            var task = Task.Run(() => _userMails.Clear());
+            return task;
         }
+
     }
 }
