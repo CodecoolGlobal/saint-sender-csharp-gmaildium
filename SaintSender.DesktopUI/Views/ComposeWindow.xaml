@@ -12,12 +12,12 @@
     </Window.Resources>
     <Grid>
         <Label Content="To:" HorizontalAlignment="Left" Margin="84,43,0,0" VerticalAlignment="Top" Height="27" Width="57"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="84,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="To" HorizontalAlignment="Left" Height="23" Margin="84,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262"/>
         <Label Content="Subject" HorizontalAlignment="Left" Margin="84,122,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="84,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Subject" HorizontalAlignment="Left" Height="23" Margin="84,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262"/>
         <Label Content="Message" HorizontalAlignment="Left" Margin="84,211,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="88" Margin="84,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363"/>
+        <TextBox x:Name="Message" HorizontalAlignment="Left" Height="88" Margin="84,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="372,365,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
-        <Button Content="Send" HorizontalAlignment="Left" Margin="271,365,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Send" HorizontalAlignment="Left" Margin="271,365,0,0" VerticalAlignment="Top" Width="75" Click="SendButton_Click"/>
     </Grid>
 </Window>

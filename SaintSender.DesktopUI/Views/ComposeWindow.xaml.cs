@@ -10,7 +10,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SaintSender.Core.Services;
+using SaintSender.DesktopUI.Views;
+using SaintSender.DesktopUI.ViewModels;
 
 namespace SaintSender.DesktopUI.Views
 {
@@ -19,6 +23,7 @@ namespace SaintSender.DesktopUI.Views
     /// </summary>
     public partial class ComposeWindow : Window
     {
+        protected ComposeWindowViewModel ViewModel => (ComposeWindowViewModel)Resources["ComposeWindowViewModel"];
         public ComposeWindow()
         {
             InitializeComponent();
@@ -33,6 +38,11 @@ namespace SaintSender.DesktopUI.Views
                     this.Close();
                     break;
             }
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SendMessage(Subject.Text, Message.Text, To.Text);
         }
     }
 }
