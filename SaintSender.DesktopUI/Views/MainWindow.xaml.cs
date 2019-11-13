@@ -27,9 +27,16 @@ namespace SaintSender.DesktopUI
         public MainWindow()
         {
             InitializeComponent();
-            ViewModel.FillListBoxWithMails();
         }
 
-        
+        private void ConnectionButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.FillListBoxWithMails();
+            ConnectionButton.IsEnabled = false;
+        }
+        private void ComposeButton_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

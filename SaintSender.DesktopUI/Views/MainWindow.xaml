@@ -6,12 +6,29 @@
         xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
         xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         mc:Ignorable="d"
-        Title="G-Maildium" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        MinHeight="550" MinWidth="600"
+        Title="G-Maildium" Height="550" Width="600">
     <Window.Resources>
         <viewModel:MainWindowViewModel x:Key="MainWindowViewModel"/>
     </Window.Resources>
-    <ListBox DataContext="{StaticResource MainWindowViewModel}"
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="5">
+            <TextBox Width="150"/>
+            <Button Content="Search"/>
+        </StackPanel>
+        <ListBox DataContext="{StaticResource MainWindowViewModel}"
              ItemsSource="{Binding UserMails}"
+             Margin="5"
+             Grid.Row="1" Grid.Column="0"
              x:Name="MailListBox">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -24,4 +41,19 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
+            <Button Width="80" Height="35"
+                    Margin="0, 5"
+                    Click="ConnectionButton_Click"
+                    x:Name="ConnectionButton">
+                <TextBlock Text="Connect to GMail" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+            <Button Width="80" Height="35"
+                    Margin="0, 5"
+                    Click="ComposeButton_Click"
+                    x:Name="ComposeButton">
+                <TextBlock Text="Compose" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+        </StackPanel>
+    </Grid>
 </Window>
