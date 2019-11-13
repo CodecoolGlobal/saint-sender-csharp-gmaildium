@@ -49,15 +49,37 @@ namespace SaintSender.Core.Services
             return response;
         }
 
-        public static void UpdateService()
+        public static Message RequestSendMessage(string userId, Message email)
         {
-            ParseCredentials();
-            _service = new GmailService(new BaseClientService.Initializer()
+            try
             {
-                HttpClientInitializer = _credential,
-                ApplicationName = "Gmaildium",
-            });
+                return _service.Users.Messages.Send(email, userId).Execute();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("An error occurred: " + e.Message);
+            }
 
+            return null;
+        }
+
+        public static bool UpdateService()
+        {
+            try
+            {
+                ParseCredentials();
+                _service = new GmailService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = _credential,
+                    ApplicationName = "Gmaildium",
+                });
+                return true;
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
         }
 
         private static void ParseCredentials()

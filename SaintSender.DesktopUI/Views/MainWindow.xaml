@@ -69,8 +69,16 @@
             <Button Width="80" Height="35"
                     Margin="0, 5"
                     Click="ComposeButton_Click"
-                    x:Name="ComposeButton">
+                    x:Name="ComposeButton"
+                    IsEnabled="False">
                 <TextBlock Text="Compose" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+            <Button Width="80" Height="35"
+                    Margin="0, 5"
+                    Click="RefreshButton_Click"
+                    x:Name="RefreshButton"
+                    IsEnabled="False">
+                <TextBlock Text="Refresh" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
         </StackPanel>
     </Grid>

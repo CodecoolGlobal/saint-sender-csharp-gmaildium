@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Google.Apis.Gmail.v1.Data;
 using SaintSender.Core.Services;
@@ -12,11 +13,10 @@ namespace SaintSender.Core.Entities
     public class MailProvider
     {
 
-        public void FillListWithMailsFromAPI(in ObservableCollection<Maildium> userMails, int mailCount)
+        public void FillListWithMailsFromAPI(ICollection<Maildium> userMails, int mailCount)
         {
             ListMessagesResponse response = JSONHandler.RequestMails(mailCount);
             List<Message> messages = new List<Message>();
-            ObservableCollection<Maildium> maildia = new ObservableCollection<Maildium>();
 
             messages.AddRange(response.Messages);
             foreach (Message message in messages)
