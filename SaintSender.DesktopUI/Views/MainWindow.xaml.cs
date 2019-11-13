@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Services;
+using SaintSender.DesktopUI.Views;
 using SaintSender.DesktopUI.ViewModels;
 
 namespace SaintSender.DesktopUI
@@ -48,7 +49,7 @@ namespace SaintSender.DesktopUI
 
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            new ComposeWindow().ShowDialog();
         }
 
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)

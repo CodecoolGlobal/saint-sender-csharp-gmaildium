@@ -49,7 +49,21 @@ namespace SaintSender.Core.Services
             return response;
         }
 
-        public static bool UpdateService()
+        public static Message RequestSendMessage(string userId, Message email)
+        {
+            try
+            {
+                return _service.Users.Messages.Send(email, userId).Execute();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("An error occurred: " + e.Message);
+            }
+
+            return null;
+        }
+
+        public static void UpdateService()
         {
             try
             {
