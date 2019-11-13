@@ -37,7 +37,7 @@ namespace SaintSender.DesktopUI
         }
         private void ComposeButton_Click(object sender, RoutedEventArgs e)
         {
-            new ComposeWindow().Show();
+            new ComposeWindow().ShowDialog();
         }
     }
 }

@@ -23,5 +23,16 @@ namespace SaintSender.DesktopUI.Views
         {
             InitializeComponent();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure? Your message will be lost!", "Cancel", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    this.Close();
+                    break;
+            }
+        }
     }
 }
