@@ -63,7 +63,7 @@ namespace SaintSender.Core.Services
             return null;
         }
 
-        public static void UpdateService()
+        public static bool UpdateService()
         {
             try
             {
