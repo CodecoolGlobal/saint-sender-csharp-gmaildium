@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,18 +12,17 @@ namespace SaintSender.Core.Entities
     public class MailProvider
     {
 
-        public List<Maildium> GetMailsFromAPI(int mailCount)
+        public void FillListWithMailsFromAPI(in ObservableCollection<Maildium> userMails, int mailCount)
         {
             ListMessagesResponse response = JSONHandler.RequestMails(mailCount);
             List<Message> messages = new List<Message>();
-            List<Maildium> maildia = new List<Maildium>();
+            ObservableCollection<Maildium> maildia = new ObservableCollection<Maildium>();
 
             messages.AddRange(response.Messages);
             foreach (Message message in messages)
             {
-                maildia.Add(GetMailById(message.Id));
+                userMails.Add(GetMailById(message.Id));
             }
-            return maildia;
         }
 
         public Maildium GetMailById(string messageId)

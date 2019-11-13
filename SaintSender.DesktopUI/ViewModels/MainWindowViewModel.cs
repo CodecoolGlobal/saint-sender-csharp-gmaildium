@@ -2,18 +2,18 @@
 using SaintSender.Core.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
-    class MainWindowViewModel
+    public class MainWindowViewModel
     {
         private MailProvider _mailProvider = new MailProvider();
-        private List<Maildium> _userMails = new List<Maildium>();
 
-        public List<Maildium> UserMails { get => _userMails; private set => _userMails = value; }
+        public ObservableCollection<Maildium> UserMails { get; private set; } = new ObservableCollection<Maildium>();
 
         public MainWindowViewModel()
         {
@@ -22,7 +22,7 @@ namespace SaintSender.DesktopUI.ViewModels
 
         internal void FillListBoxWithMails()
         {
-            _userMails = _mailProvider.GetMailsFromAPI(20);
+            _mailProvider.FillListWithMailsFromAPI(UserMails, 20);
         }
     }
 }

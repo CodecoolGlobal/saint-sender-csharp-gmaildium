@@ -22,11 +22,12 @@ namespace SaintSender.DesktopUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+        protected MainWindowViewModel ViewModel => (MainWindowViewModel)Resources["MainWindowViewModel"];
+
         public MainWindow()
         {
             InitializeComponent();
-            mainWindowViewModel.FillListBoxWithMails();
+            ViewModel.FillListBoxWithMails();
         }
 
         

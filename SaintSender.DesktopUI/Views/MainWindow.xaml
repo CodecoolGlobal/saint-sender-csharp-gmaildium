@@ -4,13 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="G-Maildium" Height="450" Width="800">
     <Window.Resources>
         <viewModel:MainWindowViewModel x:Key="MainWindowViewModel"/>
     </Window.Resources>
-    <Grid DataContext="{Binding MainWindowViewModel}">
-        <ListBox ItemsSource="{Binding UserMails}">
+    <ListBox DataContext="{StaticResource MainWindowViewModel}"
+             ItemsSource="{Binding UserMails}"
+             x:Name="MailListBox">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -22,5 +24,4 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </Grid>
 </Window>
