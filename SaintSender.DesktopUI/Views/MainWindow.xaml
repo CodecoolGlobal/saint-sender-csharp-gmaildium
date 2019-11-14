@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
         xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        xmlns:converter ="clr-namespace:SaintSender.DesktopUI.Converters"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         MinHeight="550" MinWidth="600"
         Title="G-Maildium" Height="550" Width="600">
     <Window.Resources>
         <viewModel:MainWindowViewModel x:Key="MainWindowViewModel"/>
+        <converter:DateStringFormatConverter x:Key="DateStringFormatConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -54,7 +56,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding From}"/>
                             <Rectangle Grid.Column="1" Grid.Row="2" Width="1" Fill="Gainsboro"/>
                             <TextBlock Grid.Column="2" Grid.Row="2"
-                                       Text="{Binding RecieveDate}"/>
+                                       Text="{Binding RecieveDate, Converter={ StaticResource DateStringFormatConverter}}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
+        xmlns:converter ="clr-namespace:SaintSender.DesktopUI.Converters"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Topmost="True"
         Title="ReadMailWindow" Height="300" Width="600">
     <Window.Resources>
         <viewModel:ReadWindowViewModel x:Key="ReadWindowViewModel"/>
+        <converter:DateStringFormatConverter x:Key="DateStringFormatConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

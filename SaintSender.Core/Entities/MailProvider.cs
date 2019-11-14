@@ -38,8 +38,6 @@ namespace SaintSender.Core.Entities
             {
                 payloadMessage = GetMessageFromEmailBody(payload);
             }
-            
-            
 
             Maildium maildium = new Maildium()
             {
