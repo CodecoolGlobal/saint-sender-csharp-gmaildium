@@ -37,7 +37,6 @@ namespace SaintSender.Core.Entities
             }
             rawMessage.Replace("/ -/ g", "+").Replace("/ _ / g", "/");
 
-
             Maildium maildium = new Maildium()
             {
                 Id = message.Id,
