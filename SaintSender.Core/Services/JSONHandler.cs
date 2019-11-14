@@ -37,6 +37,19 @@ namespace SaintSender.Core.Services
             return response;
         }
 
+        internal static string RequestRawMailBodyById(string messageId)
+        {
+            if (_service == null)
+            {
+                throw new ServiceNotInitializedException();
+            }
+            GetRequest request = _service.Users.Messages.Get("me", messageId);
+            request.Format = GetRequest.FormatEnum.Raw;
+            var response = request.Execute();
+
+            return response.Raw;
+        }
+
         internal static Message RequestMailById(string messageId)
         {
             if (_service == null)
@@ -44,6 +57,7 @@ namespace SaintSender.Core.Services
                 throw new ServiceNotInitializedException();
             }
             GetRequest request = _service.Users.Messages.Get("me", messageId);
+            request.Format = GetRequest.FormatEnum.Full;
             var response = request.Execute();
 
             return response;
@@ -81,6 +95,8 @@ namespace SaintSender.Core.Services
                 return false;
             }
         }
+
+
 
         private static void ParseCredentials()
         {

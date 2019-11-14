@@ -97,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ReadMailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ComposeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +112,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\ReadWindowViewModel.cs" />
+    <Compile Include="Views\ReadMailWindow.xaml.cs">
+      <DependentUpon>ReadMailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ComposeWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

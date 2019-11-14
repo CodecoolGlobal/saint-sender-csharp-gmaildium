@@ -28,5 +28,10 @@ namespace SaintSender.DesktopUI.ViewModels
             return task;
         }
 
+        internal Maildium GetMailbyID(string maildId)
+        {
+            return _mailProvider.GetMailById(maildId);
+        }
+
     }
 }
