@@ -8,6 +8,7 @@ namespace SaintSender.Core.Entities
 {
     public struct Maildium
     {
+        public static string unreadableMailErrorMessage = "";
         public string Id { get; set; }
         public string From { get; set; }
         public string To { get; set; }
