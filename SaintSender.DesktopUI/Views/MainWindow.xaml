@@ -24,8 +24,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="5">
-            <TextBox Width="150"/>
-            <Button Content="Search"/>
+            <TextBox x:Name="SearchBox" Width="120" Height="25" TextChanged="TextBox_TextChanged" KeyDown="SearchBox_KeyDown" VerticalContentAlignment="Center" IsReadOnly="True"/>
+            <Button x:Name="SearchButton" Content="Search" IsEnabled="False" Click="SearchButton_Click" />
+            <TextBlock x:Name="SearchResult" VerticalAlignment="Center" Margin=" 5, 0"/>
         </StackPanel>
         <ListBox DataContext="{StaticResource MainWindowViewModel}"
              ItemsSource="{Binding UserMails}"

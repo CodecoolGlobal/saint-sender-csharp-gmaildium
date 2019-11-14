@@ -41,6 +41,7 @@ namespace SaintSender.DesktopUI
                 
                 RefreshButton.IsEnabled = true;
                 ComposeButton.IsEnabled = true;
+                SearchBox.IsReadOnly = false;
             } else
             {
                 ConnectionButton.IsEnabled = true;
@@ -71,6 +72,37 @@ namespace SaintSender.DesktopUI
                 ReadMailWindow readMailWindow = new ReadMailWindow(maildium);
                 readMailWindow.Show();
             }
-    }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+
+            SearchButton.IsEnabled = textBox.Text.Length >= 3;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            var searchResults = from maildium in ViewModel.UserMails where ViewModel.DoesMaildiumContainString(maildium, SearchBox.Text) select maildium;
+            var searchResultCount = searchResults.Count();
+            if (searchResultCount == 0)
+            {
+                SearchResult.Text = "The search ended without results. :(";
+            }
+            else
+            {
+                SearchResult.Text = $"We found {searchResultCount} mail(s)! See them below.";
+            }
+            ViewModel.AddSearchResultToUserMails(searchResults.ToList());
+            
+        }
+
+        private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Return)
+            {
+                SearchButton_Click(sender, e);
+            }
+        }
     }
 }

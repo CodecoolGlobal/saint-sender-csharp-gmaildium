@@ -33,5 +33,18 @@ namespace SaintSender.DesktopUI.ViewModels
             return _mailProvider.GetMailById(maildId);
         }
 
+        internal bool DoesMaildiumContainString(Maildium maildium, string text)
+        {
+            return maildium.From.Contains(text) || maildium.MessageBody.Contains(text) || maildium.Subject.Contains(text);
+        }
+
+        internal void AddSearchResultToUserMails(List<Maildium> list)
+        {
+            UserMails.Clear();
+            foreach (var maildium in list)
+            {
+                UserMails.Add(maildium);
+            }
+        }
     }
 }
