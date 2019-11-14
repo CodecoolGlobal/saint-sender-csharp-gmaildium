@@ -5,25 +5,21 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
-    public class ReadWindowViewModel : ObjectDataProvider
+    public class ReadWindowViewModel
     {
-        public string From { get; set; }
-        public string Subject { get; set; }
-        public string Date { get; set; }
-        public string Message { get; set; }
+        public Maildium Maildium { get; set; }
 
-        public ReadWindowViewModel(Maildium maildium)
+        internal void GetFields(in TextBlock fromTextBlock, in TextBlock subjectTextBlock, in TextBlock dateTextBlock, in TextBox messageTextBox)
         {
-            From = maildium.From;
-            Subject = maildium.Subject;
-            Date = "rzstf";
-            Message = maildium.MessageBody;
-
+            fromTextBlock.Text = Maildium.From;
+            subjectTextBlock.Text = Maildium.Subject;
+            dateTextBlock.Text = Maildium.RecieveDate;
+            messageTextBox.Text = Maildium.MessageBody;
         }
-
     }
 }

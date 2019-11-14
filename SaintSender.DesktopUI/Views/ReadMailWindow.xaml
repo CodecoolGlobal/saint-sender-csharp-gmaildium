@@ -3,32 +3,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SaintSender.DesktopUI"
         mc:Ignorable="d"
         xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
-        Title="ReadMailWindow" Height="450" Width="800">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        Title="ReadMailWindow" Height="300" Width="600">
     <Window.Resources>
         <viewModel:ReadWindowViewModel x:Key="ReadWindowViewModel"/>
     </Window.Resources>
-    <Grid  DataContext="{StaticResource ReadWindowViewModel}">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="250"/>
-            <RowDefinition/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0">From:</Label>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding From}"/>
-        <Label Grid.Row="2" Grid.Column="0">Subject:</Label>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Subject}"/>
-        <Label Grid.Row="2" Grid.Column="1">Date:</Label>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Date}"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan ="2" Text="{Binding Message}" Margin="10"/>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Text="From:" VerticalAlignment="Center" Margin="10, 0"/>
+            <TextBlock x:Name="FromTextBlock" Margin="12,0" TextWrapping="NoWrap" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <TextBlock Text="Subject:" VerticalAlignment="Center" Margin="10, 0"/>
+            <TextBlock x:Name="SubjectTextBlock" TextWrapping="NoWrap" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Text="Date:" VerticalAlignment="Center" Margin="10, 0"/>
+            <TextBlock x:Name="DateTextBlock" TextWrapping="NoWrap" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox x:Name="MessageTextBox" IsReadOnly="True" Width="550" TextWrapping="Wrap"/>
+        </StackPanel>
+        <Button Click="Button_Click" Grid.Row="4" Grid.Column="1" Content="Close" Width="80" Height="20" HorizontalAlignment="Right" Margin="0,0,25,0"/>
     </Grid>
 </Window>

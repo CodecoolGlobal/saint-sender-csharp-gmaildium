@@ -23,13 +23,24 @@ namespace SaintSender.DesktopUI
     /// </summary>
     public partial class ReadMailWindow : Window
     {
-        public ReadWindowViewModel ViewModel;
+        public ReadWindowViewModel viewModel;
 
         public ReadMailWindow(Maildium maildium)
         { 
-            ViewModel = new ReadWindowViewModel(maildium);  
+            viewModel = new ReadWindowViewModel();
+            viewModel.Maildium = maildium;
             InitializeComponent();
-            
+            FillFields();
+        }
+
+        private void FillFields()
+        {
+            viewModel.GetFields(FromTextBlock, SubjectTextBlock, DateTextBlock, MessageTextBox);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

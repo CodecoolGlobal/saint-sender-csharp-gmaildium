@@ -64,13 +64,13 @@ namespace SaintSender.DesktopUI
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //if (e.ClickCount == 2)
-            //{
-            Maildium maildium = new Maildium();
-            maildium = MainWindowViewModel.UserMails.First();
-            ReadMailWindow readMailWindow = new ReadMailWindow(maildium);
-            readMailWindow.Show();
-            //}
-        }
+            if (e.ClickCount == 2)
+            {
+                var mailId = ((Grid)sender).Tag.ToString();
+                Maildium maildium = ViewModel.GetMailbyID(mailId);
+                ReadMailWindow readMailWindow = new ReadMailWindow(maildium);
+                readMailWindow.Show();
+            }
+    }
     }
 }

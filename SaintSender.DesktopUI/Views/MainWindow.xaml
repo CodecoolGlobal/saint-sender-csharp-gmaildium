@@ -33,7 +33,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="2" BorderBrush="Gainsboro">
-                        <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                        <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown" Tag="{Binding Id}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="3"/>
