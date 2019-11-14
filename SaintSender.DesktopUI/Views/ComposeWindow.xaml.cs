@@ -75,5 +75,10 @@ namespace SaintSender.DesktopUI.Views
 
             return result;
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
+        }
     }
 }
