@@ -9,19 +9,18 @@ using System.Windows.Data;
 
 namespace SaintSender.DesktopUI.Converters
 {
-    class DateStringFormatConverter : BaseConverter, IValueConverter
+    class IsReadFormatConverter : BaseConverter, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string date = value.ToString();
-            date = date.Substring(0, 22);
-            return date;
+            var isRead = (bool)value;
+            return isRead ? "Read" : "Unread";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            DateTime parsedDate = DateTime.Parse(value.ToString());
-            return parsedDate;
+            var isReadString = value.ToString();
+            return isReadString.Equals("Read");
         }
     }
 }

@@ -8,11 +8,12 @@
         xmlns:converter ="clr-namespace:SaintSender.DesktopUI.Converters"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        MinHeight="550" MinWidth="600"
-        Title="G-Maildium" Height="550" Width="600">
+        MinHeight="550" MinWidth="800"
+        Title="G-Maildium" Height="550" Width="800">
     <Window.Resources>
         <viewModel:MainWindowViewModel x:Key="MainWindowViewModel"/>
         <converter:DateStringFormatConverter x:Key="DateStringFormatConverter"/>
+        <converter:IsReadFormatConverter x:Key="IsReadFormatConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,6 +33,7 @@
              ItemsSource="{Binding UserMails}"
              Margin="5"
              Grid.Row="1" Grid.Column="0"
+             HorizontalContentAlignment="Stretch"
              x:Name="MailListBox">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -40,7 +42,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="3"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="130"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20"/>
@@ -51,7 +53,7 @@
                                        Text="{Binding Subject}" 
                                        TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"/>
                             <Rectangle Grid.Column="1" Grid.Row="0" Width="1" Fill="Gainsboro"/>
-                            <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding IsRead}"/>
+                            <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding IsRead, Converter= {StaticResource IsReadFormatConverter}}"/>
                             <Rectangle Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Height="1" Fill="Gainsboro"/>
                             <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding From}"/>
                             <Rectangle Grid.Column="1" Grid.Row="2" Width="1" Fill="Gainsboro"/>

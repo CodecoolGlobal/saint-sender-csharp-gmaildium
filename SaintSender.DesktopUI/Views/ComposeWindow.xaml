@@ -6,6 +6,8 @@
         xmlns:viewModel="clr-namespace:SaintSender.DesktopUI.ViewModels"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Title="ComposeWindow" Height="450" Width="500">
     <Window.Resources>
         <viewModel:ComposeWindowViewModel x:Key="ComposeWindowViewModel"/>
@@ -27,7 +29,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Message"/>
-            <TextBox x:Name="Message" HorizontalAlignment="Left" Height="226" Width="464" TextWrapping="Wrap"/>
+            <TextBox x:Name="Message" HorizontalAlignment="Left" Height="210" Width="464" TextWrapping="Wrap" AcceptsReturn="True"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Cancel" Height="30" Width="75" Margin="5" Click="CancelButton_Click"/>
