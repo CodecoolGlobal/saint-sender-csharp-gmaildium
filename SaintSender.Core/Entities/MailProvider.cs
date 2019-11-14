@@ -28,16 +28,7 @@ namespace SaintSender.Core.Entities
         public Maildium GetMailById(string messageId)
         {
             Message message = JSONHandler.RequestMailById(messageId);
-            String rawMessage = JSONHandler.RequestRawMailBodyById(messageId);
             MessagePart payload = message.Payload;
-
-            if (rawMessage == null)
-            {
-                rawMessage = payload.Body.Data;
-            }
-            rawMessage.Replace("/ -/ g", "+").Replace("/ _ / g", "/");
-
-
             Maildium maildium = new Maildium()
             {
                 Id = message.Id,
@@ -46,7 +37,6 @@ namespace SaintSender.Core.Entities
                 Subject = GetHeaderValueByHeaderName(payload.Headers, "Subject"),
                 RecieveDate = GetHeaderValueByHeaderName(payload.Headers, "Date"),
                 IsRead = !message.LabelIds.Contains("UNREAD"),
-                MessageBody = rawMessage
             };
             return maildium;
         }
@@ -55,9 +45,9 @@ namespace SaintSender.Core.Entities
         {
             return (from header
                    in headers
-                    where header.Name.Equals(headerName)
-                    select header.Value).First();
+                   where header.Name.Equals(headerName)
+                   select header.Value).First();
         }
-
+            
     }
 }

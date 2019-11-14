@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SaintSender.Core.Entities;
 using SaintSender.Core.Services;
 using SaintSender.DesktopUI.Views;
 using SaintSender.DesktopUI.ViewModels;
@@ -61,16 +59,5 @@ namespace SaintSender.DesktopUI
             await ViewModel.FillListBoxWithMails();
             RefreshButton.IsEnabled = true;
         }
-
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount == 2)
-            {
-                var mailId = ((Grid)sender).Tag.ToString();
-                Maildium maildium = ViewModel.GetMailbyID(mailId);
-                ReadMailWindow readMailWindow = new ReadMailWindow(maildium);
-                readMailWindow.Show();
-            }
-    }
     }
 }
