@@ -38,7 +38,7 @@ namespace SaintSender.DesktopUI.ViewModels
 
         private static string Base64UrlEncode(string input)
         {
-            var inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
+            var inputBytes = Encoding.UTF8.GetBytes(input);
             // Special "url-safe" base64 encode.
             return Convert.ToBase64String(inputBytes)
               .Replace('+', '-')

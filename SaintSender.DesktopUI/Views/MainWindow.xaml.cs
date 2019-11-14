@@ -97,9 +97,9 @@ namespace SaintSender.DesktopUI
             
         }
 
-        private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void SearchBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Return)
+            if (e.Key == Key.Return)
             {
                 SearchButton_Click(sender, e);
             }
