@@ -53,7 +53,7 @@ namespace SaintSender.DesktopUI.Views
         private void SendMessage()
         {
             ViewModel.SendMessage(Subject.Text, Message.Text, To.Text);
-            MessageBox.Show("Email has been sent!");
+            MessageBox.Show("Email has been sent!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             Close();
         }
 
@@ -64,13 +64,13 @@ namespace SaintSender.DesktopUI.Views
 
             if (!address.IsValid(To.Text))
             {
-                MessageBox.Show("Invalid email address!");
+                MessageBox.Show("Invalid email address!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 result = MessageBoxResult.No;
             }
             else if (Subject.Text == string.Empty || Message.Text == string.Empty)
             {
                 result = MessageBox.Show("Some fields were left empty. Are you sure " +
-                    "you want to send the email?", "Confirmation", MessageBoxButton.YesNo);
+                    "you want to send the email?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             }
 
             return result;

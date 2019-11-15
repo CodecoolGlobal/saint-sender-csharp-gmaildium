@@ -13,7 +13,7 @@ namespace SaintSender.Core.Entities
         public string From { get; set; }
         public string To { get; set; }
         public string Subject { get; set; }
-        public string RecieveDate { get; set; }
+        public string ReceiveDate { get; set; }
         public bool IsRead { get; set; }
         public string MessageBody { get; set; }
     }

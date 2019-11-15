@@ -19,7 +19,7 @@ namespace SaintSender.DesktopUI.ViewModels
         {
             fromTextBlock.Text = Maildium.From;
             subjectTextBlock.Text = Maildium.Subject;
-            string date = Maildium.RecieveDate;
+            string date = Maildium.ReceiveDate;
             dateTextBlock.Text = date.Substring(0, 22);
             messageTextBox.Text = Maildium.MessageBody;
         }

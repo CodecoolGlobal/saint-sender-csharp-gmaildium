@@ -45,7 +45,7 @@ namespace SaintSender.Core.Entities
                 From = GetHeaderValueByHeaderName(payload.Headers, "From"),
                 To = GetHeaderValueByHeaderName(payload.Headers, "To"),
                 Subject = GetHeaderValueByHeaderName(payload.Headers, "Subject"),
-                RecieveDate = GetHeaderValueByHeaderName(payload.Headers, "Date"),
+                ReceiveDate = GetHeaderValueByHeaderName(payload.Headers, "Date"),
                 IsRead = !message.LabelIds.Contains("UNREAD"),
                 MessageBody = payloadMessage
             };
