@@ -59,6 +59,7 @@ namespace SaintSender.DesktopUI
         {
             RefreshButton.IsEnabled = false;
             SearchResult.Text = string.Empty;
+            SearchBox.Text = string.Empty;
             await ViewModel.ClearList();
             await ViewModel.FillListBoxWithMails();
             RefreshButton.IsEnabled = true;
