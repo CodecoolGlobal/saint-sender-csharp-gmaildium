@@ -58,6 +58,7 @@ namespace SaintSender.DesktopUI
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshButton.IsEnabled = false;
+            SearchResult.Text = string.Empty;
             await ViewModel.ClearList();
             await ViewModel.FillListBoxWithMails();
             RefreshButton.IsEnabled = true;
@@ -99,7 +100,7 @@ namespace SaintSender.DesktopUI
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Return)
+            if (e.Key == Key.Return && SearchBox.Text.Length > 3)
             {
                 SearchButton_Click(sender, e);
             }
